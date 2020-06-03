@@ -178,9 +178,6 @@ c3 <- function(data,
     }
 
     
-    
-    print(dtype)
-    
     axis <- list(x = list(label = x,
                           type = dtype),
                 y = list(label = y))
