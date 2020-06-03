@@ -147,6 +147,12 @@ c3 <- function(data,
     #this option is currently only for grouped scatter plots
 
     # remove columns not in x,y,group
+    
+    dtype <- switch(class(data[[x]]),
+                    'Date' = 'timeseries',
+                    'character' = 'category',
+                    'numeric' = 'indexed')
+    
     data <- data[, c(x, y, group)]
 
     groups <- as.character(unique(data[[group]]))
@@ -171,7 +177,12 @@ c3 <- function(data,
 
     }
 
-    axis <- list(x = list(label = x),
+    
+    
+    print(dtype)
+    
+    axis <- list(x = list(label = x,
+                          type = dtype),
                 y = list(label = y))
 
 
